@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+Untended Graves
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/1.4_untended_graves-new.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Untended Graves</h5>
+      <p class="card-text">Untended Graves is a Location in Dark Souls 3. It is reached through the Consumed King's Garden and is an optional area.
+         Shrouded in darkness, but will upon further inspection reveal a familiar place.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </table>
+
+  <div class="card">
+    <div class="card-header">
+      <p>What can you find in Untended Graves:</p>
+    </div>
+    {% for exact in list_exact %}
+    
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="color:aliceblue">{{exact[0]}}:     {{exact[1]}}</footer>
+        
+      </blockquote>
+      
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

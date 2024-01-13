@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+{% for slayer in list_slayer %}
+    {{slayer[0]}}
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+{% for slayer in list_slayer %}
+<table class = "table table-hover table-dark" style="width: 40rem">
+    <thead>
+      <tr>
+        <th scope = "col">Strength</th>
+        <th scope = "col">Dexterity</th>
+        <th scope = "col">Intelligence</th>
+        <th scope = "col">Faith</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <h6>{{slayer[9]}}</h6>
+        </td>
+        <td>
+            <h6>{{slayer[10]}}</h6>
+        </td>
+        <td>
+            <h6>{{slayer[11]}}</h6>
+        </td>
+        <td>
+            <h6>{{slayer[12]}}</h6>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="card max-auto" style="width: 12rem;">
+    
+    <img class="card-img-top" src= "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/{{slayer[2]}}" alt="Card image cap">
+    <div class="card-body" style = "background-color: rgba(0, 0, 0, 0);">
+      <h5 class="card-title">{{slayer[0]}}</h5>
+      <p class="card-text"></p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Weapon Type: {{slayer[1]}}</li>
+      <li class="list-group-item">Base Damage: {{slayer[3]}}</li>
+      <li class="list-group-item">Magic Damage: {{slayer[4]}}</li>
+      <li class="list-group-item">Fire Damage: {{slayer[5]}}</li>
+      <li class="list-group-item">Lightning Damage: {{slayer[6]}}</l  i>
+      <li class="list-group-item">Dark Damage: {{slayer[7]}}</li>
+      <li class="list-group-item">Critical Strike: {{slayer[8]}}</li>
+    </ul>
+    
+   
+  </div>
+  {% endfor %}
+{% endblock %}

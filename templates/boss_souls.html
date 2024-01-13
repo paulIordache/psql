@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+{% for bsoul in list_boss_souls %}
+{{bsoul[0]}}
+{%endfor%}
+{% endblock %}
+
+{% block content %}
+
+{% for bsoul in list_boss_souls %}
+<div class="card" style="width: 18rem;">
+
+    <img class="card-img-top" src="{{bsoul[4]}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{bsoul[0]}}</h5>
+    </div>
+  </div>
+  </table>
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      <p>Description:</p>
+    </div>
+    
+    <div class="card-body"> 
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="color:aliceblue">{{bsoul[3]}}</footer>
+        <footer class="blockquote-footer" style="color:aliceblue">Defeat "{{bsoul[1]}}" in order to aquire it</footer>
+        <footer class="blockquote-footer" style="color:aliceblue">Gain {{bsoul[2]}} souls</footer>
+      </blockquote>
+     
+    </div>
+
+  </div>
+  {% endfor %}
+{% endblock %}

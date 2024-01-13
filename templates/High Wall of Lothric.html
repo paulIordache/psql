@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+High Wall of Lothric
+{% endblock %}
+
+{% block content %}
+<div id = "cards">
+<div class="card" style="width: 18rem; background-color: #8a868600">
+    <img class="card-img-top" src="https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/2.1_high_wall_of_lothric-new.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">High Wall of Lothric</h5>
+      <p class="card-text" >High Wall of Lothric is a Location in Dark Souls 3. After exiting the Cemetery of Ash and once out of the Firelink Shrine,
+         the player arrives at the higher ramparts of Lothric's walls. Plagued by the hollowed and haunted by a fire-breathing wyvern,
+          the area hides away valuable treasure for the observant.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </table>
+
+  <div class="card" >
+    <div class="card-header">
+      <p>What can you find in High Wall of Lothric:</p>
+    </div>
+    {% for exact in list_exact %}
+    
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="color:aliceblue">{{exact[0]}}:     {{exact[1]}}</footer>
+        
+      </blockquote>
+      
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

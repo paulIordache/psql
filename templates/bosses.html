@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    Bosses
+{% endblock %}
+
+{% block content %}
+
+<table class = "table table-hover table-dark">
+    <thead>
+      <tr>  
+        <th scope = "col">Name</th>
+        <th scope = "col">Location</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for bosses in list_bosses %}
+      <tr>
+        <td>
+            <h6>{{bosses[0]}}</h6>
+        </td>
+
+        <td>
+            <h6>{{bosses[1]}}</h6>
+          </td>
+
+        <td>
+            <a class = "btn btn-outline btn-info" href = "{{url_for('irithyl_page', id=bosses[1])}}">Go to "{{bosses[1]}}"</a>
+        </td>
+        <td>
+          <a class = "btn btn-outline btn-info" href = "{{url_for('bosses_page', id=bosses[0])}}">Go to "{{bosses[0]}}"</a>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

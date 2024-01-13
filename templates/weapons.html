@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+Weapons
+{% endblock %}
+
+{% block content %}
+<table class = "table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope = "col">Weapon</th>
+        <th scope = "col">Location</th>
+        <th scope = "col">Weapon Type</th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      {% for weapons in list_weapons %}
+      <tr>
+        <td>
+          <h6>{{weapons[0]}}</h6>
+        </td>
+      
+        <td>
+          <h6>{{weapons[1]}}</h6>
+        </td>
+
+        <td>
+            <ul>
+              <li class = "nav-item active">
+                <a class = "nav-link" href = "{{ url_for('types_page', id=weapons[2]) }}">{{ weapons[2] }}</a>
+              </li>
+            </ul>
+        </td>
+
+        <td>
+          <a class = "btn btn-outline btn-danger" href = "{{ url_for('slayer_page', id=weapons[0]) }}">Find out More</a>
+        </td>
+
+        <td>
+          <a class = "btn btn-outline btn-warning" href = "{{url_for('irithyl_page', id=weapons[1])}}">Go to "{{weapons[1]}}"</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+Catacombs of Carthus
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/8.1_irithyll_dungeon-new.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Catacoms of Carthus</h5>
+      <p class="card-text">Catacombs of Carthus is a Location in Dark Souls 3. Bleed-inducing Skeletons and Grave Wardens of
+         The High Lord stand in the adventurer's path to plunder these tombs, that need to be passed through to reach the fabled city of Irithyll.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  
+<div class="card">
+  <div class="card-header">
+    <p>What can you find in Catacombs of Carthus:</p>
+  </div>
+  {% for exact in list_exact %}
+  
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <footer class="blockquote-footer" style="color:aliceblue">{{exact[0]}}:     {{exact[1]}}</footer>
+      
+    </blockquote>
+    
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

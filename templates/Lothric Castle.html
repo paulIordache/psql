@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+Lothric Castle
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/9.1_lothric_castle-new.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Lothric Castle</h5>
+      <p class="card-text">Lothric Castle is a Location in Dark Souls 3. Once the Ashen One has obtained the sacrificial vessel,
+         the Castle may be entered. Lothric Wyverns, Lothric Knights and Winged Knights closely guard the path to the Twin Princes.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </table>
+
+  <div class="card">
+    <div class="card-header">
+      <p>What can you find in Lothric Castle:</p>
+    </div>
+    {% for exact in list_exact %}
+    
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="color:aliceblue">{{exact[0]}}:     {{exact[1]}}</footer>
+      </blockquote>
+      
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

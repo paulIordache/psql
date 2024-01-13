@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Road of Sacrifices
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/4.1_road_of_sacrifices-new.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Road of Sacrifices</h5>
+      <p class="card-text">Road of Sacrifices is a Location in Dark Souls 3.
+         It is a wooded area, marked by crumbling ruins and a murky swamp inhabited by crustaceans of varying size.
+          Damp and fetid, as rotted as it is alive, this road demands perseverance but offers rewards to those seeking the arcane arts.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </table>
+
+  <div class="card">
+    <div class="card-header">
+      <p>What can you find in Road of Sacrifices:</p>
+    </div>
+    {% for exact in list_exact %}
+    
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="color:aliceblue">{{exact[0]}}:     {{exact[1]}}</footer>
+        
+      </blockquote>
+      
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

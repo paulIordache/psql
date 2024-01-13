@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+{% for inpc in list_invading_npc %}
+{{inpc[0]}}
+{%endfor%}
+{% endblock %}
+
+{% block content %}
+
+{% for inpc in list_invading_npc %}
+<div class="card" style="width: 18rem;">
+
+    <img class="card-img-top" src="{{inpc[2]}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{inpc[0]}}</h5>
+      <p class="card-text">Found in: {{inpc[4]}}
+        <a class = "btn btn-outline btn-info" href = "{{url_for('irithyl_page', id=inpc[4])}}">Go to "{{inpc[4]}}"</a>
+        
+      </p>
+    </div>
+  </div>
+  </table>
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      <p>Role and Description:</p>
+    </div>
+    
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="color:aliceblue">{{inpc[1]}}</footer>
+        <footer class="blockquote-footer" style="color:aliceblue">{{inpc[3]}}</footer>
+      </blockquote>
+     
+    </div>
+
+  </div>
+  {% endfor %}
+{% endblock %}

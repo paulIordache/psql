@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+Archdragon Peak
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/10.1_archdragon_peak-new.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Archdragon Peak</h5>
+      <p class="card-text">Archdragon Peak is a Location in Dark Souls 3. The Unkindled is transported to this location when the "Path of the Dragon" Gesture is used adjacent to the Dragonkin statue/corpse found in Irithyll Dungeon.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  
+<div class="card">
+  <div class="card-header">
+    <p>What can you find in Archdragon Peak:</p>
+  </div>
+  {% for exact in list_exact %}
+  
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <footer class="blockquote-footer" style="color:aliceblue">{{exact[0]}}:     {{exact[1]}}</footer>
+    </blockquote>
+    
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

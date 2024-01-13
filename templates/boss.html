@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+{% for boss in list_boss %}
+{{boss[0]}}
+{%endfor%}
+{% endblock %}
+
+{% block content %}
+
+{% for boss in list_boss %}
+<div class="card" style="width: 18rem;">
+
+    <img class="card-img-top" src="{{boss[3]}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{boss[0]}}</h5>
+      <p class="card-text">Found in:<ul> <li class = "nav-item active">
+        <a class = "nav-link" href = "{{url_for('irithyl_page', id=boss[1] )}}">{{ boss[1] }}</a>
+  </li></ul></p>
+    </div>
+  </div>
+  </table>
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      <p>Description and Drop:</p>
+    </div>
+    
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="color:aliceblue">{{boss[4]}}</footer>
+        <footer class="blockquote-footer" style="color:aliceblue">Drops: <ul>
+            <li class = "nav-item active">
+              <a class = "nav-link" href = "{{ url_for('slayer_page', id=boss[2]) }}">{{ boss[2] }}</a>
+            </li>
+          </ul></footer>
+      </blockquote>
+     
+    </div>
+
+  </div>
+  {% endfor %}
+{% endblock %}
