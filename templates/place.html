@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 <body>
+    {% for exact2 in list_exact2 %}
     <div class="main1" style="height: 2000px;background: linear-gradient(to top, rgb(0, 0, 0)100%,rgb(34, 29, 29)50%)">
             <div class="navbar">
                 <div class="icon">
@@ -22,28 +23,33 @@
                         <li><a href="{{ url_for('npc_page') }}">NPCS</a></li>
                         <li><a href="{{ url_for('weapons_page') }}">WEAPONS</a></li>
                         <li><a href="{{ url_for('bsouls_page') }}">BOSS SOULS</a></li>
-                        {% if current_user.is_authenticated %}
-                        <li><a href="#" style="color:rgb(255, 255, 255)"> Welcome, {{ current_user.username }}<br></a>
-                            <a href="{{ url_for('logout_page') }}">LOGOUT</a></li>
-                        {% else %}
-                        <li><a href="{{ url_for('login_page') }}">LOGIN</a></li>
-                        {% endif %}
-                        <li><a href="{{ url_for('register_page') }}">REGISTER</a></li>
                     </ul>
                 </div>
         </div>
-        {% for inv in list_invading_npc %}
+        
         <div class="box3" style="height: 1000px">
-            <p style="color:aliceblue; font-size: 50px; text-align: center;">{{inv[0]}}</p>
-            <p style="color:rgb(255, 255, 255); font-size: 20px; padding: 10px"><br>{{inv[1]}}</p>
-            <p style="color:rgb(255, 255, 255); font-size: 20px; padding: 10px"><br>{{inv[3]}}</p>
-            <p style="font-size: 20px; color:rgb(255, 255, 255); padding: 10px">Found in: <a class="hov" href="{{url_for('irithyl_page', id=inv[4])}}">{{inv[4]}}</a></li>
-            <div style=" display: flex; justify-content: center; align-items: center; margin-bottom: 200vh;">
-            <img src="{{inv[2]}}" style="width: 400px;
-            height: 500px;object-fit: contain;">
+            <p style="color:aliceblue; font-size: 50px; text-align: center;">{{exact2[0]}}</p>
+            <p style="color:rgb(255, 255, 255); font-size: 20px; padding: 10px"><br>{{exact2[1]}}</p>
+            <div style=" display: flex; justify-content: center; align-items: center;">
+            <img src="{{exact2[2]}}" style="margin-top: 50px; transform: scale(1);">
             </div>
+            <p style="text-align: center; font-size: 30px; padding: 50px;">What can you find in {{exact2[0]}}?</p>
+            <ol style="margin-left: 45px;">
+                {% for exact in list_exact %}
+                <li style="font-size: 19px; padding: 5px">
+                    <a class="hov" href="{{url_for('bosses_page', id=exact[0])}}">{{exact[0]}}</a>
+                    : {{exact[1]}}
+                </li>
+                {% endfor %}
+
+                {% for exact3 in list_exact3 %}
+                <li style="font-size: 19px; padding: 5px">{{exact3[0]}}: {{exact3[1]}}</li>
+                {% endfor %}
+            </ol>
+
           </div>
-          {% endfor %}
+          
+        {% endfor %}
 
     </div>  
     

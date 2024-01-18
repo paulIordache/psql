@@ -1,49 +1,42 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 {% block title %}
 Npc
 {% endblock %}
 
 {% block content %}
+<div class="box1">
+  <p style="color:rgb(255, 255, 255)" class="par"><br>Indeed, each entry in the Dark Souls trilogy is filled to
+    the brim with stories that could almost<br>
+    bring players to tears.<br> From a pair of lifelong friends forced to fight at the end of the world,<br>
+    to a warrior and his wolf that chose to spend eternity holding back a dark and evil force, FromSoftware’s<br>
+    seminal franchise undoubtedly has some of the saddest character stories in gaming today.</p>
+</div>
+<main class="table">
+  <section class="table_header">
+    <h1>Npc</h1>
+  </section>
+  <section class="table_body">
+    <table>
+      <thead>
+        <tr>
+          <th>Npc</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for npc in list_npc %}
+        <tr>
+          <td style="color: aliceblue;">{{npc[0]}}</td>
+          <td style="color:aliceblue">{{npc[1]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  
+</main>
+<div class="content">
+<button class="cn" style="margin-top: 30px;margin-left: 450px ;background-color: rgba(248, 248, 247, 0.984);"><a href="{{url_for('invading_page')}}">Show Only Invading Npc's</a></button>
+</div>
 
-<table class = "table table-hover table-dark">
-    <thead>
-      <tr>  
-        <th scope = "col">Npc</th>
-        <th scope = "col">Role</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {% for npc in list_npc %}
-      <tr>
-        <td>
-          <h6>{{npc[0]}}</h6>
-        </td>
-
-        <td>
-          <h6>{{npc[1]}}</h6>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-</table>
-
-
-<script>
-    function myFunction() {
-      var dots = document.getElementById("dots");
-      var moreText = document.getElementById("more");
-      var btnText = document.getElementById("myBtn");
-    
-      if (dots.style.display === "none") {
-        dots.style.display = "inline";
-        btnText.innerHTML = "Read more"; 
-        moreText.style.display = "none";
-      } else {
-        dots.style.display = "none";
-        btnText.innerHTML = "Read less"; 
-        moreText.style.display = "inline";
-      }
-    }
-    </script>
 {% endblock %}

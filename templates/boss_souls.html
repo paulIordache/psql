@@ -1,36 +1,53 @@
-{% extends 'base.html' %}
-{% block title %}
-{% for bsoul in list_boss_souls %}
-{{bsoul[0]}}
-{%endfor%}
-{% endblock %}
-
-{% block content %}
-
-{% for bsoul in list_boss_souls %}
-<div class="card" style="width: 18rem;">
-
-    <img class="card-img-top" src="{{bsoul[4]}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{bsoul[0]}}</h5>
-    </div>
-  </div>
-  </table>
-
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">
-      <p>Description:</p>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+      {% for bsouls in list_boss_souls %}
+        {{bsouls[0]}}
+      {% endfor %}
+    </title>
     
-    <div class="card-body"> 
-      <blockquote class="blockquote mb-0">
-        <footer class="blockquote-footer" style="color:aliceblue">{{bsoul[3]}}</footer>
-        <footer class="blockquote-footer" style="color:aliceblue">Defeat "{{bsoul[1]}}" in order to aquire it</footer>
-        <footer class="blockquote-footer" style="color:aliceblue">Gain {{bsoul[2]}} souls</footer>
-      </blockquote>
-     
-    </div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+    <div class="main1" style="height: 2000px;background: linear-gradient(to top, rgb(0, 0, 0)100%,rgb(34, 29, 29)50%)">
+            <div class="navbar">
+                <div class="icon">
+                    <h2 class="logo">Dark Souls III</h2>
+                </div>
 
-  </div>
-  {% endfor %}
-{% endblock %}
+                <div class="menu">
+                    <ul>
+                        <li><a href="{{ url_for('home_page') }}">HOME</a></li>
+                        <li><a href="{{ url_for('location_page') }}">LOCATIONS</a></li>
+                        <li><a href="{{ url_for('market_page') }}">ITEMS</a></li>
+                        <li><a href="{{ url_for('boss_page') }}">BOSSES</a></li>
+                        <li><a href="{{ url_for('npc_page') }}">NPCS</a></li>
+                        <li><a href="{{ url_for('weapons_page') }}">WEAPONS</a></li>
+                        <li><a href="{{ url_for('bsouls_page') }}">BOSS SOULS</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li><a href="#" style="color:rgb(255, 255, 255)"> Welcome, {{ current_user.username }}<br></a>
+                            <a href="{{ url_for('logout_page') }}">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('login_page') }}">LOGIN</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('register_page') }}">REGISTER</a></li>
+                    </ul>
+                </div>
+        </div>
+        {% for bsouls in list_boss_souls %}
+        <div class="box3" style="height: 1000px">
+            <p style="color:aliceblue; font-size: 50px; text-align: center;">{{bsouls[0]}}</p>
+            <p style="color:rgb(255, 255, 255); font-size: 20px; padding: 10px"><br>Dropped by <a class="hov" href="{{url_for('bosses_page', id=bsouls[1])}}">{{bsouls[1]}}</a></p>
+            <p style="color:rgb(255, 255, 255); font-size: 20px; padding: 10px"><br>{{bsouls[3]}}</p>
+            <p style="font-size: 20px; color:rgb(255, 255, 255); padding: 10px">Souls Gained on Use: {{bsouls[2]}}</li>
+            <div style=" display: flex; justify-content: center; align-items: center; margin-bottom: 200vh;">
+            <img src="{{bsouls[4]}}" style="transform: scale(1); padding: 70px">
+            </div>
+          </div>
+          {% endfor %}
+
+    </div>  
+    
+</body>
+</html>

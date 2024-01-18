@@ -1,46 +1,46 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 {% block title %}
-Weapons
+    Weapons 
 {% endblock %}
 
 {% block content %}
-<table class = "table table-hover table-dark">
-    <thead>
-      <tr>
-        <th scope = "col">Weapon</th>
-        <th scope = "col">Location</th>
-        <th scope = "col">Weapon Type</th>
-      </tr>
-      
-    </thead>
-    <tbody>
-      {% for weapons in list_weapons %}
-      <tr>
-        <td>
-          <h6>{{weapons[0]}}</h6>
-        </td>
-      
-        <td>
-          <h6>{{weapons[1]}}</h6>
-        </td>
-
-        <td>
-            <ul>
-              <li class = "nav-item active">
-                <a class = "nav-link" href = "{{ url_for('types_page', id=weapons[2]) }}">{{ weapons[2] }}</a>
-              </li>
-            </ul>
-        </td>
-
-        <td>
-          <a class = "btn btn-outline btn-danger" href = "{{ url_for('slayer_page', id=weapons[0]) }}">Find out More</a>
-        </td>
-
-        <td>
-          <a class = "btn btn-outline btn-warning" href = "{{url_for('irithyl_page', id=weapons[1])}}">Go to "{{weapons[1]}}"</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% endblock %}
+<div class="box1">
+  <p style="color:rgb(255, 255, 255)" class="par">Weapons in Dark Souls 3 are listed on this page.<br>
+     Players may equip up to 3 in the slots for each hand. When developing a build, the player should<br>
+      try to find the weapon that mixes the right amount of damage, bonuses and moveset, alongside<br>
+       stamina consumption and Skills. Weapon classes do not necessarily share the same skills so<br>
+        check each individual weapon page to see its specific skill. If you would like to learn more<br>
+         about each weapon, visit their page, or check out the Combat page for specific explanations<br>
+          on how to master the game. You can use this Equipment & Spell Checklist to keep track of what you have</p>
+</div>
+<main class="table">
+  <section class="table_header">
+    <h1>Weapons</h1>
+  </section>
+  <section class="table_body">
+    <table>
+      <thead>
+        <tr>
+          <th>Weapon Name</th>
+          <th>Location</th>
+          <th>Weapon Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for wpn in list_weapons %}
+        <tr>
+          <td style="color: aliceblue;">{{wpn[0]}}</td>
+          <td style="color:aliceblue">Go to
+            <a class="link" href = "{{url_for('irithyl_page', id=wpn[1])}}">"{{wpn[1]}}"</a>
+          </td>
+          <td style="color:aliceblue">{{wpn[2]}}<br>Show Only
+            <a class="link" href = "{{url_for('types_page', id=wpn[2])}}">"{{wpn[2]}}"</a></td>
+          </td>
+          
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</main>
+{% endblock %}

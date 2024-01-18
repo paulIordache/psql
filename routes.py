@@ -84,7 +84,7 @@ conn = psycopg2.connect(dbname = DB_NAME, user = DB_USER, password = DB_PASS, ho
 @app.route('/')
 @app.route('/home')
 def home_page():
-    return render_template('/home.html')
+    return render_template('/newhome.html')
 
 #Route to items page
 @app.route('/items')
@@ -152,7 +152,6 @@ def login_page():
 @app.route('/logout')
 def logout_page():
     logout_user()
-    flash("You have been logged out!", category = 'info')
     return redirect(url_for("home_page"))
 
 #Route to a certain weapon page
@@ -185,15 +184,21 @@ def types_page(id):
 @app.route('/location/<string:id>')   
 def irithyl_page(id):
     cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+    cur2 = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+    cur3 = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+    d = "select name, description, picture, background from location\
+        where name = '" + id + '\''
     s = "select distinct b.name, weapons.name_weapon  from bosses b join location l on b.location = l.id join weapons on b.item_drop = weapons.id_weapon\
-        where l.name = "'\'' + id + '\''"\
-        union\
-        select i.name, usage from items i join location l on i.id_location = l.id join items_usage on i.id_item = items_usage.id_mp_item\
+        where l.name = "'\'' + id + '\''
+    f = "select i.name, usage from items i join location l on i.id_location = l.id join items_usage on i.id_item = items_usage.id_mp_item\
         where l.name =" + '\'' + id + '\''
-    name = id + '.html'
     cur.execute(s)
     list_exact = cur.fetchall()
-    return render_template(name, list_exact = list_exact)
+    cur2.execute(d)
+    list_exact2 = cur2.fetchall()
+    cur3.execute(f)
+    list_exact3 = cur3.fetchall()
+    return render_template("place.html", list_exact = list_exact, list_exact2 = list_exact2, list_exact3 = list_exact3)
 
 @app.route('/npc')
 def npc_page():
@@ -215,7 +220,7 @@ def invading_page():
 @app.route('/npc/invading/<string:id>')
 def invading_npc_page(id):
     cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
-    s = "select npc.name, role, picture, description, location.name from npc join invading_npc on invading_npc.id = npc.id_name\
+    s = "select npc.name, npc.role, invading_npc.picture, invading_npc.description, location.name from npc join invading_npc on invading_npc.id = npc.id_name\
                                                                         join location on invading_npc.id_location=location.id\
         where invading_npc.id = npc.id_name and npc.name ='" + id + '\''
     cur.execute(s)
@@ -233,7 +238,7 @@ def boss_page():
 @app.route('/bosses/<string:id>')
 def bosses_page(id):
     cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
-    s = "select b.name, l.name, w.name_weapon, b.picture, description from bosses b join location l on l.id=b.location\
+    s = "select b.name, l.name, w.name_weapon, b.picture, b.description from bosses b join location l on l.id=b.location\
                                                                          join weapons w on w.id_weapon=b.item_drop\
         where b.name = '" + id + "\'"
     cur.execute(s)

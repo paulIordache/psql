@@ -1,29 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 {% block title %}
   Items
 {% endblock %}
 
 {% block content %}
-  <table class = "table table-hover table-dark">
-    <thead>
-      <tr>
-        <th scope = "col">Item</th>
-        <th scope = "col">Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for users in list_users %}
-      <tr>
-        <td><h6>{{users[0]}}</h6></td>
-        <td>
-          <h6>{{users[1]}}</h6>
-        </td>
-      
-        <td>
-          <a class = "btn btn-outline btn-info" href = "{{ url_for('irithyl_page', id=users[1]) }}">Go to "{{users[1]}}"</button>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+
+<div class="box1" style="text-align: center;"><br>"Wherever you go, the moon still sets in Irithyll. Wherever you may be, Irithyll is your home."<br><br>
+  "The features of the old gods, as if from legend. They say children born like this are fated to be taken to the Boreal Valley."<br><br>
+  "If the tales are true, it is home to old moon-worshipping nobles, and should be packed with treasure."</p>
+</div>
+<main class="table">
+  <section class="table_header">
+    <h1>Items</h1>
+  </section>
+  <section class="table_body">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for users in list_users %}
+        <tr>
+          <td style="color:aliceblue">{{users[0]}}</td>
+          <td style="color:aliceblue">Go to <a class="link" href="{{ url_for('irithyl_page', id=users[1]) }}">{{users[1]}}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</main>
 {% endblock %}

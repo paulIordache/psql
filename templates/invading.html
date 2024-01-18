@@ -1,35 +1,41 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 {% block title %}
     Invading Npc
 {% endblock %}
 
 {% block content %}
-
-<table class = "table table-hover table-dark">
-    <thead>
-      <tr>  
-        <th scope = "col">Invading Npc</th>
-        <th scope = "col">Role</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {% for invading in list_invading %}
-      <tr>
-        <td>
-          <h6>{{invading[0]}}</h6>
-        </td>
-
-        <td>
-          <h6>{{invading[1]}}</h6>
-          </td>
-
-          <td>
-            <a class = "btn btn-outline btn-info" href = "{{ url_for('invading_npc_page', id=invading[0]) }}">Find out More</a>
-           </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-</table>
+<div class="box1">
+  <p style="color:rgb(255, 255, 255)" class="par"><br>FromSoftware games are known for their stunning level design,<br>
+     and Dark Souls 3 is no stranger to the detail that the developers put into the game’s areas.<br>
+    In fact, one of the game's distinguishing characteristics is its meticulously<br> crafted and hauntingly atmospheric locations
+     , each with its own unique challenges and secrets waiting to be unraveled.<br>
+      The locations within this game are not mere backdrops but are capable of completely shaping your journey.</p>
+</div>
+<main class="table">
+  <section class="table_header">
+    <h1>Locations</h1>
+  </section>
+  <section class="table_body">
+    <table>
+      <thead>
+        <tr>
+          <th>Invading Npc</th>
+          <th>Role</th>
+          <th>Hyperlink</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for invading in list_invading %}
+        <tr>
+          <td style="color:aliceblue">{{invading[0]}}</td>
+          <td style="color:aliceblue">{{invading[1]}}</td>
+          <td style="color: aliceblue;">Go to <a class="link" href="{{ url_for('invading_npc_page', id=invading[0]) }}">{{invading[0]}}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  
+</main>
 
 {% endblock %}

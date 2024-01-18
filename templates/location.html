@@ -1,32 +1,38 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 {% block title %}
   Location
 {% endblock %}
 
 {% block content %}
-  <table class = "table table-hover table-dark">
-    <thead>
-      <tr>
-        <th scope = "col">Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for location in list_location %}
-      <tr>
-        <td>
-          <!-- <ul>
-            <li class = "nav-item active">
-              <a class = "nav-link" href = "{{ url_for('irithyl_page', id=location[0]) }}">{{ location[0] }}</a>
-            </li>
-          </ul> -->
-          <h6>{{location[0]}}</h6>
-        </td>
-      
-        <td>
-         <a class = "btn btn-outline btn-info" href = "{{ url_for('irithyl_page', id=location[0]) }}">Find out more</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+<div class="box1">
+  <p style="color:rgb(255, 255, 255)" class="par"><br>FromSoftware games are known for their stunning level design,<br>
+     and Dark Souls 3 is no stranger to the detail that the developers put into the game’s areas.<br>
+    In fact, one of the game's distinguishing characteristics is its meticulously<br> crafted and hauntingly atmospheric locations
+     , each with its own unique challenges and secrets waiting to be unraveled.<br>
+      The locations within this game are not mere backdrops but are capable of completely shaping your journey.</p>
+</div>
+<main class="table">
+  <section class="table_header">
+    <h1>Locations</h1>
+  </section>
+  <section class="table_body">
+    <table>
+      <thead>
+        <tr>
+          <th>Hyperlink</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for location in list_location %}
+        <tr>
+          <td style="color: aliceblue;">Go to <a class="link" href="{{ url_for('irithyl_page', id=location[0]) }}">{{location[0]}}</a></td>
+          <td style="color:aliceblue">{{location[0]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  
+</main>
 {% endblock %}

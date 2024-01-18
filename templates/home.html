@@ -1,8 +1,44 @@
-{% extends 'base.html' %}
-{% block title %}
-  Home Page
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        {% block title %}
 
-{% block content %}
-  
-{% endblock %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+
+    <div class="main">
+            <div class="navbar">
+                <div class="icon">
+                    <h2 class="logo">Dark Souls III</h2>
+                </div>
+
+                <div class="menu">
+                    <ul>
+                        <li><a href="{{ url_for('home_page') }}">HOME</a></li>
+                        <li><a href="{{ url_for('location_page') }}">LOCATIONS</a></li>
+                        <li><a href="{{ url_for('market_page') }}">ITEMS</a></li>
+                        <li><a href="{{ url_for('boss_page') }}">BOSSES</a></li>
+                        <li><a href="{{ url_for('npc_page') }}">NPCS</a></li>
+                        <li><a href="{{ url_for('weapons_page') }}">WEAPONS</a></li>    
+                        <li><a href="{{ url_for('bsouls_page') }}">BOSS SOULS</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li><a href="#" style="color:rgb(255, 255, 255)"> Welcome, {{ current_user.username }}<br></a>
+                            <a href="{{ url_for('logout_page') }}">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('login_page') }}">LOGIN</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('register_page') }}">REGISTER</a></li>
+                    </ul>
+                </div>
+        </div>
+        {% block content %}
+
+        {% endblock %} 
+        
+    </div>
+</body>
+</html>

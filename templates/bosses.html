@@ -1,37 +1,44 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 {% block title %}
     Bosses
 {% endblock %}
 
 {% block content %}
-
-<table class = "table table-hover table-dark">
-    <thead>
-      <tr>  
-        <th scope = "col">Name</th>
-        <th scope = "col">Location</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {% for bosses in list_bosses %}
-      <tr>
-        <td>
-            <h6>{{bosses[0]}}</h6>
-        </td>
-
-        <td>
-            <h6>{{bosses[1]}}</h6>
+<div class="box1">
+  <p style="color:rgb(255, 255, 255)" class="par"><br>Indeed, each entry in the Dark Souls trilogy is filled to
+    the brim with stories that could almost<br>
+    bring players to tears.<br> From a pair of lifelong friends forced to fight at the end of the world,<br>
+    to a warrior and his wolf that chose to spend eternity holding back a dark and evil force, FromSoftware’s<br>
+    seminal franchise undoubtedly has some of the saddest character stories in gaming today.</p>
+</div>
+<main class="table">
+  <section class="table_header">
+    <h1>Bosses</h1>
+  </section>
+  <section class="table_body">
+    <table>
+      <thead>
+        <tr>
+          <th>Boss Name</th>
+          <th>Location</th>
+          <th>Hyperlink</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bosses in list_bosses %}
+        <tr>
+          <td style="color: aliceblue;">{{bosses[0]}}</td>
+          <td style="color:aliceblue">{{bosses[1]}}</td>
+          <td style="color:aliceblue">Go to
+            <a class="link" href = "{{url_for('irithyl_page', id=bosses[1])}}">"{{bosses[1]}}"</a>
+            <br>Go to
+            <a class="link" href = "{{url_for('bosses_page', id=bosses[0])}}">"{{bosses[0]}}"</a>
           </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</main>
 
-        <td>
-            <a class = "btn btn-outline btn-info" href = "{{url_for('irithyl_page', id=bosses[1])}}">Go to "{{bosses[1]}}"</a>
-        </td>
-        <td>
-          <a class = "btn btn-outline btn-info" href = "{{url_for('bosses_page', id=bosses[0])}}">Go to "{{bosses[0]}}"</a>
-      </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-</table>
 {% endblock %}
