@@ -9,7 +9,6 @@ Welcome to the **Dark Souls 3 Wiki**! This is a Flask-based website that serves 
 - **NPCs**: Detailed information about all NPCs, their questlines, and locations. 🧙‍♂️
 - **Items**: A complete list of items, including their descriptions, where to find them, and their uses. 🛡️⚔️
 - **Bosses**: Strategies, weaknesses, and locations for all bosses. 🐉💀
-- **Market**: Prices for items, where to buy/sell them, and tips for trading. 💰🛒
 - **Locations**: Maps and guides for all in-game areas. 🗺️
 
 ---
@@ -20,31 +19,25 @@ Welcome to the **Dark Souls 3 Wiki**! This is a Flask-based website that serves 
 - **Bootstrap**: For styling and responsive design. 🎨
 - **Jinja2 Templating**: Used for dynamic page generation. 📄
 - **HTML/CSS**: For structuring and styling the pages. 🌐
-- **Markdown**: For documentation (like this README). 📝
-
 ---
 
 ## Pages Overview 📄
 
 ### NPCs 🧙‍♂️
-- **Template**: `npc.html`
-- **Details**: Includes NPC name, description, questline, and location.
+- **Template**: `npc.html`, `invading_npc.html`
+- **Details**: Includes NPC name, description, and location.
 
 ### Items 🛡️⚔️
-- **Template**: `item.html`
+- **Template**: `item.html`, `weapons.html`
 - **Details**: Item name, description, where to find it, and its uses.
 
 ### Bosses 🐉💀
 - **Template**: `boss.html`
-- **Details**: Boss name, strategies, weaknesses, and location.
-
-### Market 💰🛒
-- **Template**: `market.html`
-- **Details**: Item prices, where to buy/sell, and trading tips.
+- **Details**: Boss name and location
 
 ### Locations 🗺️
 - **Template**: `location.html`
-- **Details**: Area name, map, and guide.
+- **Details**: Area name.
 
 ---
 
