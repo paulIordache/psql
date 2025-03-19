@@ -45,5 +45,9 @@ Welcome to the **Dark Souls 3 Wiki**! This is a Flask-based website that serves 
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/darksouls3-wiki.git
+   git clone https://github.com/yourusername/psql.git
    cd darksouls3-wiki
+2. **Run the project**:
+   ```bash
+   python3 run.py
+
